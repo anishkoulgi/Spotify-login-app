@@ -1,21 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
+import AppLoading from 'expo-app-loading';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+} from 'react-native';
+import { useFonts } from '@use-expo/font';
+import { Routes } from './src/navigation';
 
 export default function App() {
+  const [isLoaded] = useFonts({
+    'Circular-std': require('./assets/CircularStd-Book.otf'),
+    'Circular-std-bold': require('./assets/CircularStd-Bold.otf'),
+    'Circular-std-light': require('./assets/CircularStd-Light.otf'),
+    'Circular-std-medium': require('./assets/CircularStd-Medium.otf'),
+  });
+
+  if (!isLoaded) {
+    return <AppLoading />;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.root}>
+      <Routes />
+      <StatusBar backgroundColor='white' barStyle='dark-content' />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  root: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'white',
+    fontFamily: 'Circular-std',
   },
 });
