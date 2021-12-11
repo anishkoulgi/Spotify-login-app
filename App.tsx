@@ -1,14 +1,9 @@
+import { useFonts } from '@use-expo/font';
 import AppLoading from 'expo-app-loading';
 import React from 'react';
 import {
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  StatusBar,
+  SafeAreaView, StatusBar, StyleSheet
 } from 'react-native';
-import { useFonts } from '@use-expo/font';
 import { Routes } from './src/navigation';
 
 export default function App() {
